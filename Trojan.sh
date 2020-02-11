@@ -172,7 +172,8 @@ EOF
 	wget https://github.com/dannywei7/vps-tro/raw/master/trojan-cli.zip
 	unzip trojan-cli.zip
 	cp /usr/src/trojan-cert/fullchain.cer /usr/src/trojan-cli/fullchain.cer
-	trojan_passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 8)
+	#trojan_passwd=$(cat /dev/urandom | head -1 | md5sum | head -c 8)
+	trojan_passwd="5b73add1"
 	cat > /usr/src/trojan-cli/config.json <<-EOF
 {
     "run_type": "client",
@@ -252,7 +253,8 @@ EOF
 EOF
 	cd /usr/src/trojan-cli/
 	zip -q -r trojan-cli.zip /usr/src/trojan-cli/
-	trojan_path=$(cat /dev/urandom | head -1 | md5sum | head -c 16)
+	#trojan_path=$(cat /dev/urandom | head -1 | md5sum | head -c 16)
+	trojan_path="client"
 	mkdir /usr/share/nginx/html/${trojan_path}
 	mv /usr/src/trojan-cli/trojan-cli.zip /usr/share/nginx/html/${trojan_path}/
 	#增加启动脚本
